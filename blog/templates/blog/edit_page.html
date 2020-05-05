@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+</head>
+<body>
+<form action="{% url 'blog:edit_action' %}" method="post">
+    <!--    post请求时需要设置 csrf_token 防范出现验证错误 即跨站请求-->
+    {% csrf_token %}
+<!--                              {{ artical.id | default:'0' }}       采用过滤器-->
+    <input type="hidden" name="artical_id" value="{{ artical.id | default:'0' }}"/>
+    <label>文章标题
+        <input type="text" name="title" value="{{ artical.title }}"/>
+    </label>
+    <br/>
+    <label>文章内容
+        <input type="text" name="content" value="{{ artical.content }}"/>
+    </label>
+    <br/>
+
+
+<!--    {% if artical %}-->
+<!--&lt;!&ndash;    name="artical_id" 可以渲染到 views，通过request.POST.get到该值 &ndash;&gt;-->
+<!--    <input type="hidden" name="artical_id" value="{{artical.id}}"/>-->
+<!--    <label>文章标题-->
+<!--        <input type="text" name="title" value="{{artical.title}}"/>-->
+<!--    </label>-->
+<!--    <br/>-->
+<!--    <label>文章内容-->
+<!--        <input type="text" name="content" value="{{artical.content}}"/>-->
+<!--    </label>-->
+<!--    <br/>-->
+<!--    {% else %}-->
+<!--    <input type="hidden" name="artical_id" value="0"/>-->
+<!--    <label>文章标题-->
+<!--        <input type="text" name="title"/>-->
+<!--    </label>-->
+<!--    <br/>-->
+<!--    <label>文章内容-->
+<!--        <input type="text" name="content""/>-->
+<!--    </label>-->
+<!--    <br/>-->
+<!--    {% endif %}-->
+
+
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

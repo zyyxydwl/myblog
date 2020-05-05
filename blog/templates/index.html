@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello myblog</title>
+    <h1>“对于一只盲目航行的船来说，所有的风都是逆风”。</h1>
+    <h1>{{hello}}</h1>
+</head>
+<body>
+<h1>
+    <a href="{% url 'blog:edit_page' 0 %}">新文章</a>
+</h1>
+<h2>
+{% for artical in articals %}
+    <a href="{% url 'blog:artical_page' artical.id %}">{{ artical.title }}</a>
+    <br/>
+{% endfor %}
+</h2>
+</body>
+</html>
